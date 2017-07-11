@@ -1,5 +1,5 @@
 import React from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
+import Paper from 'material-ui/Paper';
 
 export default class SearchBar extends React.Component {
 
@@ -10,7 +10,9 @@ export default class SearchBar extends React.Component {
 
     render() {
         return (
-            <RaisedButton label="Search"></RaisedButton>
+            <div>
+            </div>
+            //<RaisedButton label="Search"></RaisedButton>
         );
     }
 }
