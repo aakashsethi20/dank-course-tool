@@ -9,12 +9,8 @@ export default class SearchBar extends React.Component {
     }
 
     render() {
-        const someCourse = {
-            name: "Anal. of User Interfaces"
-        }
-        const onClick = () => this.props.onCourseSelected(someCourse);
         return (
-            <RaisedButton label="Search" onTouchTap={onClick}></RaisedButton>
+            <RaisedButton label="Search"></RaisedButton>
         );
     }
 }
