@@ -19,19 +19,9 @@ export default class SimpleLookup extends React.Component {
     }
 
     render() {
-        let courseDescription = null;
-        if(this.state.selectedCourse) {
-            courseDescription = (
-                <Card>
-                    <CardHeader title={this.state.title} />
-                    <div>{this.state.selectedCourse.name}</div>
-                </Card>
-            )
-        }
         return (
             <div>
                 <SearchBar onCourseSelected={this.onCourseSelected}/>
-                {courseDescription}
             </div>
         );
     }
