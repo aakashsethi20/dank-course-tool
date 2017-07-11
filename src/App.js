@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import TextField from 'material-ui/TextField';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import SimpleLookup from './components/SimpleLookup';
 
-class App extends Component {
+class App extends React.Component {
+
   render() {
     return (
       <MuiThemeProvider>
-        <div>Hello world</div>
+        <SimpleLookup />
       </MuiThemeProvider>
     );
   }
