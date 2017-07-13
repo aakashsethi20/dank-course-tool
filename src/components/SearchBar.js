@@ -3,11 +3,11 @@ import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 =======
 import AutoComplete from 'material-ui/AutoComplete';
-import {MenuItem, Menu} from 'material-ui/Menu';
+import {MenuItem} from 'material-ui/Menu';
 import Paper from 'material-ui/Paper';
-import TextField from 'material-ui/TextField';
 import SearchIcon from 'material-ui/svg-icons/action/search';
 import semesterIcons from '../SemesterIcons';
+import fp from 'lodash/fp';
 
 
 const coursesToSearchResults = (courses) => {
@@ -22,10 +22,11 @@ const coursesToSearchResults = (courses) => {
                         <div>{`${course.code} - ${course.title}`}</div>
                         <div>
                             {
-                                course.sections
-                                    .map(section => section.term)
-                                    .filter((v, i, a) => a.indexOf(v) === i) //unique items
-                                    .map(term => semesterIcons[term])
+                                fp.flow(
+                                    fp.map(section => ({term: section.term, year: section.year})),
+                                    fp.uniqWith(fp.isEqual),
+                                    fp.map(section => <span title={`This course is offered in ${fp.capitalize(section.term)} ${section.year}.`}>{semesterIcons[section.term]}</span>)
+                                )(course.sections)
                             }
                         </div>
                     </div>
@@ -51,6 +52,10 @@ export default class SearchBar extends React.Component {
                             term: "summer",
                             year: "2017"
                         }, 
+                        {
+                            term: "winter",
+                            year: "2018"
+                        },
                         {
                             term: "winter",
                             year: "2018"
