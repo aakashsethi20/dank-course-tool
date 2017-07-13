@@ -100,6 +100,7 @@ export default class SearchBar extends React.Component {
                     fullWidth={true}
                     hintText="Search for a course"
                     dataSource={coursesToSearchResults(this.state.courses)}
+                    underlineStyle={{display: 'none'}}
                 />
             </Paper>
         );
