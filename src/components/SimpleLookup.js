@@ -22,6 +22,7 @@ export default class SimpleLookup extends React.Component {
         return (
             <div>
                 <SearchBar onCourseSelected={this.onCourseSelected}/>
+                {/*<CourseDetails course={sampleCourse}/>*/}
             </div>
         );
     }
