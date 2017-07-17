@@ -29,6 +29,12 @@ export default class CourseDetails extends React.Component {
 
         const course = this.props.course;
 
+        let lectures = course.sections[0].activity[0].lectures;
+
+        const lectureElems = lectures.map(lecture => (
+            <div>{lecture.day}&emsp;{lecture.time}</div>
+        ));
+
         return (
 
            <div>
@@ -42,10 +48,7 @@ export default class CourseDetails extends React.Component {
                             <TableRow>
                                 <TableRowColumn><strong>Lecture</strong></TableRowColumn>
                                 <TableRowColumn>
-                                    <p>
-                                        {course.sections[0].activity[0].lectures[0].day}&emsp;{course.sections[0].activity[0].lectures[0].time}<br></br>
-                                        {course.sections[0].activity[0].lectures[1].day}&emsp;{course.sections[0].activity[0].lectures[1].time}
-                                    </p>
+                                    {lectureElems}
                                 </TableRowColumn>
                             </TableRow>
                             <TableRow>
