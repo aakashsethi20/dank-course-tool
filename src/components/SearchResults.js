@@ -7,7 +7,7 @@ import semesterIcons from '../SemesterIcons';
 const SearchResults = (props) => {
     let courses = props.courses;
     let onSelect = props.onSelect;
-    if(!courses) {
+    if(courses.length === 0) {
         return (<div>No courses</div>);
     }
     let listItem = courses.map( (course, index) => (
