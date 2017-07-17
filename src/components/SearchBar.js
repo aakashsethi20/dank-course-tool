@@ -55,7 +55,7 @@ export default class SearchBar extends React.Component {
     }
 
     onSearchTextUpdate = (event, newText) => {
-        const filteredCourses = this.state.courses.filter(course => courseToString(course).toLowerCase().includes(newText.toLowerCase()));
+        const filteredCourses = newText == "" ? undefined : this.state.courses.filter(course => courseToString(course).toLowerCase().includes(newText.toLowerCase()));
         this.setState({
             searchText: newText,
             searchActive: true,
@@ -72,7 +72,7 @@ export default class SearchBar extends React.Component {
     }
 
     render() {
-        const speed = 300;
+        const speed = 200;
         const transitionStyles = {
             default: {
                 transition: `all ${speed}ms ease-in-out`,
@@ -128,9 +128,9 @@ export default class SearchBar extends React.Component {
                             }}
                         >
                         {
-                            animationStatus == "entered" || animationStatus == "entering"
-                            ? <IconButton style={styles.backIcon} tooltip="Cancel search" tooltipStyles={{top: "20px"}} onTouchTap={this.onCancelSearch}><BackIcon/></IconButton>
-                            : <SearchIcon style={styles.searchIcon}/>
+                            animationStatus == "exited"
+                            ? <SearchIcon style={styles.searchIcon}/>
+                            : <IconButton style={styles.backIcon} tooltip="Cancel search" tooltipStyles={{top: "20px"}} onTouchTap={this.onCancelSearch}><BackIcon/></IconButton>
                         }
                             
                             <TextField
@@ -143,7 +143,7 @@ export default class SearchBar extends React.Component {
                             />
                         </Paper>
                         {
-                            animationStatus == "entered"
+                            animationStatus == "entered" && this.state.searchResults
                             ? <SearchResults key="results" courses={this.state.searchResults} onSelect={this.courseSelected} />
                             : null
                         }
