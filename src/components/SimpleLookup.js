@@ -29,41 +29,33 @@ export default class SimpleLookup extends React.Component {
                         rating: "1950539"
                     },
                     letter: "A",
-                    activity: [
+                    lectures: [
                         {
-                            lectures: [
-                                {
-                                    day: "Tuesday",
-                                    time: "11:30 - 13:00"
-                                },
-                                {
-                                    day: "Thursday",
-                                    time: "11:30 - 13:00"
-                                }
-                            ]
+                            day: "Tuesday",
+                            time: "11:30 - 13:00"
                         },
                         {
-                            labs: [
-                                {
-                                    day: "Tuesday",
-                                    time: "10:00 - 11:30"
-                                },
-                                {
-                                    day: "Tuesday",
-                                    time: "10:00 - 11:30"
-                                }
-                            ]
-                        },
-                        {
-                            dgd: [
-                                {
-                                    day: "Wednesday",
-                                    time: "14:30 - 16:00"
-                                }
-                            ]
+                            day: "Thursday",
+                            time: "11:30 - 13:00"
                         }
                     ],
-                }
+                    labs: [
+                        {
+                            day: "Tuesday",
+                            time: "10:00 - 11:30"
+                        },
+                        {
+                            day: "Tuesday",
+                            time: "10:00 - 11:30"
+                        }
+                    ],
+                    dgd: [
+                        {
+                            day: "Wednesday",
+                            time: "14:30 - 16:00"
+                        }
+                    ],
+                },
             ]
         }
         return (

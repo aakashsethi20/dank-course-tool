@@ -1,6 +1,5 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
-import Divider from 'material-ui/Divider';
 import {
   Table,
   TableBody,
@@ -9,6 +8,7 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table';
+import CourseSection from './CourseSection';
 
 export default class CourseDetails extends React.Component {
     constructor(props) {
@@ -28,50 +28,17 @@ export default class CourseDetails extends React.Component {
         // };
 
         const course = this.props.course;
+        const section = course.sections[0];
 
-        let lectures = course.sections[0].activity[0].lectures;
-
-        const lectureElems = lectures.map(lecture => (
-            <div>{lecture.day}&emsp;{lecture.time}</div>
+        const sectionElems = this.props.course.sections.map(sec => (
+            <CourseSection section = {sec}></CourseSection>
         ));
 
-        return (
 
-           <div>
-                <Paper style={style} zDepth={3}>
-                    <Table style={{ tableLayout: 'auto' }} selectable={ false }>
-                        <TableBody displayRowCheckbox = {false}>
-                            <TableRow>
-                                <TableRowColumn><strong>Section</strong>&emsp;{course.sections[0].letter}</TableRowColumn>
-                                <TableRowColumn><strong>Professor: <a target="_blank" href={`http://www.ratemyprofessor.com/ShowRatings.jsp?tid=${course.sections[0].prof.rating}`}>{course.sections[0].prof.name}</a></strong></TableRowColumn>
-                            </TableRow>
-                            <TableRow>
-                                <TableRowColumn><strong>Lecture</strong></TableRowColumn>
-                                <TableRowColumn>
-                                    {lectureElems}
-                                </TableRowColumn>
-                            </TableRow>
-                            <TableRow>
-                                <TableRowColumn><strong>Lab</strong></TableRowColumn>
-                                <TableRowColumn>
-                                    <p>
-                                        {course.sections[0].activity[1].labs[0].day}&emsp;{course.sections[0].activity[1].labs[0].time}<br></br>
-                                        {course.sections[0].activity[1].labs[1].day}&emsp;{course.sections[0].activity[1].labs[1].time}
-                                    </p>
-                                </TableRowColumn>
-                            </TableRow>
-                            <TableRow>
-                                <TableRowColumn><strong>DGD</strong></TableRowColumn>
-                                <TableRowColumn>
-                                    <p>
-                                        {course.sections[0].activity[2].dgd[0].day}&emsp;{course.sections[0].activity[2].dgd[0].time}
-                                    </p>
-                                </TableRowColumn>
-                            </TableRow>
-                        </TableBody>
-                    </Table>
-                </Paper>
-           </div>
+        return (
+            <div>
+                {sectionElems}
+            </div>
         );
     }
 }
