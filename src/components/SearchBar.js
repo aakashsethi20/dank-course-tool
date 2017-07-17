@@ -1,39 +1,8 @@
 import React from 'react';
-import AutoComplete from 'material-ui/AutoComplete';
-import {MenuItem} from 'material-ui/Menu';
 import TextField from 'material-ui/TextField';
-import {List, ListItem} from 'material-ui/List';
-import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import SearchIcon from 'material-ui/svg-icons/action/search';
-import semesterIcons from '../SemesterIcons';
-import fp from 'lodash/fp';
-
-const coursesToSearchResults = (courses) => {
-    return courses.map(course => {
-        return {
-            text: `${course.code} - ${course.title}`,
-            value: (
-                <MenuItem
-                    value={course}
-                >
-                    <div style={{display: "flex", justifyContent: "space-between"}}>
-                        <div>{`${course.code} - ${course.title}`}</div>
-                        <div>
-                            {
-                                fp.flow(
-                                    fp.map(section => ({term: section.term, year: section.year})),
-                                    fp.uniqWith(fp.isEqual),
-                                    fp.map(section => <span title={`This course is offered in ${fp.capitalize(section.term)} ${section.year}.`}>{semesterIcons[section.term]}</span>)
-                                )(course.sections)
-                            }
-                        </div>
-                    </div>
-                </MenuItem>
-            )
-        }
-    });
-}
+import SearchResults from './SearchResults';
 
 const courseToString = (course) => `${course.code} - ${course.title}`;
 
@@ -93,35 +62,6 @@ export default class SearchBar extends React.Component {
         })
     }
 
-    coursesToSearchResults = (courses) => {
-        if(!courses) {
-            return (<div>No courses</div>);
-        }
-        let listItem = courses.map( (course, index) => (
-            <div>
-                <ListItem onTouchTap={() => this.courseSelected(course)}>
-                    <div style={{display: "flex", justifyContent: "space-between"}}>
-                        <div>{`${course.code} - ${course.title}`}</div>
-                        <div>
-                            {
-                                fp.flow(
-                                    fp.map(section => ({term: section.term, year: section.year})),
-                                    fp.uniqWith(fp.isEqual),
-                                    fp.map(section => <span title={`This course is offered in ${fp.capitalize(section.term)} ${section.year}.`}>{semesterIcons[section.term]}</span>)
-                                )(course.sections)
-                            }
-                        </div>
-                    </div>
-                </ListItem>
-                {index == courses.length-1 ? null : <Divider/>}
-            </div>
-        ));
-
-        return (
-            <List>{listItem}</List>
-        );
-    }
-
     render() {
         const styles = {
             searchBarContainer: {
@@ -151,7 +91,7 @@ export default class SearchBar extends React.Component {
                         value={this.state.searchText}
                     />
                 </Paper>
-                {this.coursesToSearchResults(this.state.searchResults)}
+                <SearchResults courses={this.state.searchResults} onSelect={this.courseSelected} />
             </div>
         );
     }
