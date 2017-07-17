@@ -54,6 +54,14 @@ export default class SimpleLookup extends React.Component {
                                 }
                             ]
                         },
+                        {
+                            dgd: [
+                                {
+                                    day: "Wednesday",
+                                    time: "14:30 - 16:00"
+                                }
+                            ]
+                        }
                     ],
                 }
             ]
