@@ -53,27 +53,32 @@ export default class CourseDetails extends React.Component {
             ));
         }
 
+        const sectionsSummer = summerSections(courseSections);
+        const sectionsFall = fallSections(courseSections);
+        const sectionsWinter = winterSections(courseSections);
+
         return (
             <div>
-                {summerSections(courseSections) ? 
-                    <Tab label="Summer 2017">
-                        {sectionsElems(summerSections(courseSections))}
-                    </Tab>
-                    : null
-                }
-                {fallSections(courseSections) ? 
-                    <Tab label="Fall 2017">
-                        {sectionsElems(fallSections(courseSections))}
-                    </Tab>
-                    : null
-                }
-                {winterSections(courseSections) ? 
-                    <Tab label="Winter 2018">
-                        {sectionsElems(winterSections(courseSections))}
-                    </Tab>
-                    : null
-                }
-                {sectionElems}
+                <Tabs>
+                    {sectionsSummer.length != 0 ? 
+                        <Tab label="Summer 2017">
+                            {sectionsElems(sectionsSummer)}
+                        </Tab>
+                        : null
+                    }
+                    {sectionsFall.length != 0 ? 
+                        <Tab label="Fall 2017">
+                            {sectionsElems(sectionsFall)}
+                        </Tab>
+                        : null
+                    }
+                    {sectionsWinter.length != 0 ? 
+                        <Tab label="Winter 2018">
+                            {sectionsElems(sectionsWinter)}
+                        </Tab>
+                        : null
+                    }
+                </Tabs>
             </div>
         );
     }
