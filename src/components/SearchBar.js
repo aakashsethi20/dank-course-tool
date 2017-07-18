@@ -5,10 +5,7 @@ import SearchIcon from 'material-ui/svg-icons/action/search';
 import BackIcon from 'material-ui/svg-icons/navigation/arrow-back';
 import IconButton from 'material-ui/IconButton';
 import SearchResults from './SearchResults';
-<<<<<<< HEAD
 import Transition from 'react-transition-group/Transition';
-=======
->>>>>>> 8c5e3c60bdf832797792ac52329d6677e9437acb
 import courses from '../courses';
 
 const courseToString = (course) => `${course.code} - ${course.title}`;
@@ -51,7 +48,6 @@ export default class SearchBar extends React.Component {
     }
 
     render() {
-<<<<<<< HEAD
         const speed = 200;
         const transitionStyles = {
             default: {
@@ -75,12 +71,6 @@ export default class SearchBar extends React.Component {
             }
         }
         transitionStyles.exiting = {...transitionStyles.entering}
-=======
- 
-
-        let hasFall = course => course.somePropery;
-
->>>>>>> 8c5e3c60bdf832797792ac52329d6677e9437acb
         const styles = {
             searchBarContainer: {
                 height: "56px",
