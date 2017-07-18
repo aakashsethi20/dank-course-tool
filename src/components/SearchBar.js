@@ -5,7 +5,11 @@ import SearchIcon from 'material-ui/svg-icons/action/search';
 import BackIcon from 'material-ui/svg-icons/navigation/arrow-back';
 import IconButton from 'material-ui/IconButton';
 import SearchResults from './SearchResults';
+<<<<<<< HEAD
 import Transition from 'react-transition-group/Transition';
+=======
+>>>>>>> 8c5e3c60bdf832797792ac52329d6677e9437acb
+import courses from '../courses';
 
 const courseToString = (course) => `${course.code} - ${course.title}`;
 
@@ -14,54 +18,28 @@ export default class SearchBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchActive: false,
-            courses: [
-                {
-                    title: "Analysis and Design of User Interfaces",
-                    code: "SEG3125",
-                    sections: [
-                        {
-                            term: "summer",
-                            year: "2017"
-                        }, 
-                        {
-                            term: "winter",
-                            year: "2018"
-                        },
-                        {
-                            term: "winter",
-                            year: "2018"
-                        }
-                    ]
-                },
-                {
-                    title: "Design and Analysis of Algorithms I",
-                    code: "CSI3105",
-                    sections: [
-                        {
-                            term: "fall",
-                            year: "2017"
-                        }
-                    ]
-                }
-            ]
+            searchActive: false
         }
     }
 
     onCancelSearch = () => {
         this.setState({
-            searchActive: false
+            searchActive: false,
+            selectedCourse: undefined,
+            searchText: ""
         })
+        this.props.onCourseSelected(undefined);
     }
 
     onSearchTextUpdate = (event, newText) => {
-        const filteredCourses = newText == "" ? undefined : this.state.courses.filter(course => courseToString(course).toLowerCase().includes(newText.toLowerCase()));
+        const filteredCourses = newText == "" ? undefined : courses.filter(course => courseToString(course).toLowerCase().includes(newText.toLowerCase()));
         this.setState({
             searchText: newText,
             searchActive: true,
             searchResults: filteredCourses,
             selectedCourse: undefined
         });
+        this.props.onCourseSelected(undefined);
     }
 
     courseSelected = (course) => {
@@ -69,9 +47,11 @@ export default class SearchBar extends React.Component {
             searchText: courseToString(course),
             selectedCourse: course
         })
+        this.props.onCourseSelected(course);
     }
 
     render() {
+<<<<<<< HEAD
         const speed = 200;
         const transitionStyles = {
             default: {
@@ -95,6 +75,12 @@ export default class SearchBar extends React.Component {
             }
         }
         transitionStyles.exiting = {...transitionStyles.entering}
+=======
+ 
+
+        let hasFall = course => course.somePropery;
+
+>>>>>>> 8c5e3c60bdf832797792ac52329d6677e9437acb
         const styles = {
             searchBarContainer: {
                 height: "56px",
@@ -143,7 +129,7 @@ export default class SearchBar extends React.Component {
                             />
                         </Paper>
                         {
-                            animationStatus == "entered" && this.state.searchResults
+                            animationStatus == "entered" && this.state.searchResults && !this.state.selectedCourse
                             ? <SearchResults key="results" courses={this.state.searchResults} onSelect={this.courseSelected} />
                             : null
                         }

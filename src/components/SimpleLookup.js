@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBar from './SearchBar';
 import {Card, CardHeader} from 'material-ui/Card';
+import CourseDetails from './CourseDetails';
 
 export default class SimpleLookup extends React.Component {
 
@@ -22,7 +23,7 @@ export default class SimpleLookup extends React.Component {
         return (
             <div>
                 <SearchBar onCourseSelected={this.onCourseSelected}/>
-                {/*<CourseDetails course={sampleCourse}/>*/}
+                {this.state.selectedCourse ? <CourseDetails course={this.state.selectedCourse}/> : null}
             </div>
         );
     }
