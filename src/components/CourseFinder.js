@@ -10,6 +10,7 @@ export default class CourseFinder extends React.Component {
     }
 
     render() {
+<<<<<<< 9d9d72400077d2ecb93b50ba4b84f57d515d15f1
         const subjectItems = [
             "All",
             "Administration",
@@ -24,6 +25,13 @@ export default class CourseFinder extends React.Component {
                 <div>
                     <h3>Subject</h3>
                     
+=======
+        return (
+            <div>
+                <div>
+                    <h3>Department</h3>
+
+>>>>>>> CourseFinder.js made
                 </div>
             </div>
         );
