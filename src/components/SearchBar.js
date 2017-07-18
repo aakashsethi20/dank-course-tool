@@ -6,6 +6,7 @@ import BackIcon from 'material-ui/svg-icons/navigation/arrow-back';
 import IconButton from 'material-ui/IconButton';
 import SearchResults from './SearchResults';
 import Transition from 'react-transition-group/Transition';
+import courses from '../courses';
 
 const courseToString = (course) => `${course.code} - ${course.title}`;
 
@@ -14,37 +15,7 @@ export default class SearchBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchActive: false,
-            courses: [
-                {
-                    title: "Analysis and Design of User Interfaces",
-                    code: "SEG3125",
-                    sections: [
-                        {
-                            term: "summer",
-                            year: "2017"
-                        }, 
-                        {
-                            term: "winter",
-                            year: "2018"
-                        },
-                        {
-                            term: "winter",
-                            year: "2018"
-                        }
-                    ]
-                },
-                {
-                    title: "Design and Analysis of Algorithms I",
-                    code: "CSI3105",
-                    sections: [
-                        {
-                            term: "fall",
-                            year: "2017"
-                        }
-                    ]
-                }
-            ]
+            searchActive: false
         }
     }
 
@@ -55,13 +26,14 @@ export default class SearchBar extends React.Component {
     }
 
     onSearchTextUpdate = (event, newText) => {
-        const filteredCourses = newText == "" ? undefined : this.state.courses.filter(course => courseToString(course).toLowerCase().includes(newText.toLowerCase()));
+        const filteredCourses = courses.filter(course => courseToString(course).toLowerCase().includes(newText.toLowerCase()));
         this.setState({
             searchText: newText,
             searchActive: true,
             searchResults: filteredCourses,
             selectedCourse: undefined
         });
+        this.props.onCourseSelected(undefined);
     }
 
     courseSelected = (course) => {
@@ -69,6 +41,7 @@ export default class SearchBar extends React.Component {
             searchText: courseToString(course),
             selectedCourse: course
         })
+        this.props.onCourseSelected(course);
     }
 
     render() {
