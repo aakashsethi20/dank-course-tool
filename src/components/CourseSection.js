@@ -8,6 +8,7 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table';
+import Divider from 'material-ui/Divider';
 
 export default class CourseSection extends React.Component {
     constructor(props) {
@@ -17,13 +18,16 @@ export default class CourseSection extends React.Component {
     render () {
 
         const style = {
-            margin: "1em auto",
-            maxWidth: "30em"
+           
         };
 
         let lectures = this.props.section.lectures;
         const lectureElems = lectures.map(lecture => (
-            <div>{lecture.day}&emsp;{lecture.time}</div>
+            <TableRow>
+                <TableHeaderColumn>Lecture</TableHeaderColumn>
+                <TableRowColumn>{lecture.day}}</TableRowColumn>
+                <TableRowColumn>{lecture.time}</TableRowColumn>
+            </TableRow>
         ));
 
         let labs = this.props.section.labs;
@@ -36,34 +40,62 @@ export default class CourseSection extends React.Component {
             <div>{dgd.day}&emsp;{dgd.time}</div>
         ));
 
+        const styles = {
+            container: {
+                margin: "1em auto",
+                maxWidth: "30em"
+            },
+            table: {
+                borderCollapse: "collapse",
+                width: "100%"
+            },
+            row2: {
+                height: "28px",
+                borderBottom: "1px solid rgb(224, 224, 224)"
+            },
+            row1: {
+                height: "28px"
+            },
+            row: {
+                height: "48px",
+                borderBottom: "1px solid rgb(224, 224, 224)"
+            },
+            lastRow: {
+                color: "rgba(0, 0, 0, 0.87)", 
+                height: "48px",
+            }
+        }
+
+        // let getActivity = activity => {
+
+        // });
+
         return (
-            <Paper style={style} zDepth={2}>
-                <Table style={{ tableLayout: 'auto' }} selectable={ false }>
-                    <TableBody displayRowCheckbox = {false}>
-                        <TableRow>
-                            <TableRowColumn><strong>Section</strong>&emsp;{this.props.section.letter}</TableRowColumn>
-                            <TableRowColumn><strong>Professor: <a target="_blank" href={`http://www.ratemyprofessor.com/ShowRatings.jsp?tid=${this.props.section.prof.rating}`}>{this.props.section.prof.name}</a></strong></TableRowColumn>
-                        </TableRow>
-                        <TableRow>
-                            <TableRowColumn><strong>Lecture</strong></TableRowColumn>
-                            <TableRowColumn>
-                                {lectureElems}
-                            </TableRowColumn>
-                        </TableRow>
-                        <TableRow>
-                            <TableRowColumn><strong>Lab</strong></TableRowColumn>
-                            <TableRowColumn>
-                                {labElems}
-                            </TableRowColumn>
-                        </TableRow>
-                        <TableRow>
-                            <TableRowColumn><strong>DGD</strong></TableRowColumn>
-                            <TableRowColumn>
-                                {dgdElems}
-                            </TableRowColumn>
-                        </TableRow>
-                    </TableBody>
-                </Table>
+            <Paper style={styles.container} zDepth={2}>
+                <table style={styles.table}>
+                    <tr style={styles.row}>
+                        <th>Section</th>
+                        <td>A</td>
+                        <th>Professor</th>
+                        <td>Fadi Malek</td>
+                    </tr>
+                    <tr style={styles.row}>
+                        <th rowSpan={1}>Lectures</th>
+                        <td style={{textAlign:"right"}}>Thursday</td>
+                        <td style={{textAlign:"center"}}>10:00-11:30</td>
+                        <td></td>
+                    </tr>
+                    <tr style={styles.row1}>
+                        <th rowSpan={2}>Lectures</th>
+                        <td style={{textAlign:"right"}}>Thursday</td>
+                        <td style={{textAlign:"center"}}>10:00-11:30</td>
+                        <td></td>
+                    </tr>
+                    <tr style={styles.row2}>
+                        <td style={{textAlign:"right"}}>Thursday</td>
+                        <td style={{textAlign:"center"}}>10:00-11:30</td>
+                    </tr>
+                </table>
             </Paper>
         );
     }

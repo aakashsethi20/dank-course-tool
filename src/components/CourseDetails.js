@@ -10,7 +10,6 @@ import {
 } from 'material-ui/Table';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import CourseSection from './CourseSection';
-import {cyan800} from 'material-ui/styles/colors';
 
 export default class CourseDetails extends React.Component {
     constructor(props) {
@@ -46,7 +45,7 @@ export default class CourseDetails extends React.Component {
         const sectionsWinter = winterSections(courseSections);
 
         return (
-                <Tabs style={{maxWidth: "30em", margin: "2em auto"}} tabItemContainerStyle={{backgroundColor: cyan800, color: "grey"}}>
+                <Tabs style={{maxWidth: "30em", margin: "2em auto"}}>
                     {sectionsSummer.length != 0 ? 
                         <Tab label="Summer 2017">
                             {sectionsElems(sectionsSummer)}
