@@ -8,6 +8,7 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table';
+import {Tabs, Tab} from 'material-ui/Tabs';
 import CourseSection from './CourseSection';
 
 export default class CourseDetails extends React.Component {
@@ -27,17 +28,57 @@ export default class CourseDetails extends React.Component {
         //     borderBottom: "border-bottom:1pt solid black"
         // };
 
-        const course = this.props.course;
-        const section = course.sections[0];
 
-        const sectionElems = this.props.course.sections.map(sec => (
+        const course = this.props.course;
+        const courseSections = course.sections;
+        const sectionElems = course.sections.map(sec => (
             <CourseSection section = {sec}></CourseSection>
         ));
 
+        let fallSections = sections => {
+            return sections.filter(x => x.term === "fall")
+        }
+
+        let winterSections = sections => {
+            return sections.filter(x => x.term === "winter")
+        }
+
+        let summerSections = sections => {
+            return sections.filter(x => x.term === "summer")
+        }
+
+        let sectionsElems = sections => {
+            return sections.map(sec => (
+                <CourseSection section = {sec}></CourseSection>
+            ));
+        }
+
+        const sectionsSummer = summerSections(courseSections);
+        const sectionsFall = fallSections(courseSections);
+        const sectionsWinter = winterSections(courseSections);
 
         return (
             <div>
-                {sectionElems}
+                <Tabs>
+                    {sectionsSummer.length != 0 ? 
+                        <Tab label="Summer 2017">
+                            {sectionsElems(sectionsSummer)}
+                        </Tab>
+                        : null
+                    }
+                    {sectionsFall.length != 0 ? 
+                        <Tab label="Fall 2017">
+                            {sectionsElems(sectionsFall)}
+                        </Tab>
+                        : null
+                    }
+                    {sectionsWinter.length != 0 ? 
+                        <Tab label="Winter 2018">
+                            {sectionsElems(sectionsWinter)}
+                        </Tab>
+                        : null
+                    }
+                </Tabs>
             </div>
         );
     }
