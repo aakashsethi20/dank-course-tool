@@ -17,11 +17,8 @@ export default class CourseSection extends React.Component {
     render () {
 
         const style = {
-            width: 700
-            // height: 100,
-            // margin: 20,
-            // textAlign: 'center',
-            // display: 'inline-block',
+            margin: "1em auto",
+            maxWidth: "30em"
         };
 
         let lectures = this.props.section.lectures;
@@ -40,36 +37,34 @@ export default class CourseSection extends React.Component {
         ));
 
         return (
-           <div>
-                <Paper style={style} zDepth={3}>
-                    <Table style={{ tableLayout: 'auto' }} selectable={ false }>
-                        <TableBody displayRowCheckbox = {false}>
-                            <TableRow>
-                                <TableRowColumn><strong>Section</strong>&emsp;{this.props.section.letter}</TableRowColumn>
-                                <TableRowColumn><strong>Professor: <a target="_blank" href={`http://www.ratemyprofessor.com/ShowRatings.jsp?tid=${this.props.section.prof.rating}`}>{this.props.section.prof.name}</a></strong></TableRowColumn>
-                            </TableRow>
-                            <TableRow>
-                                <TableRowColumn><strong>Lecture</strong></TableRowColumn>
-                                <TableRowColumn>
-                                    {lectureElems}
-                                </TableRowColumn>
-                            </TableRow>
-                            <TableRow>
-                                <TableRowColumn><strong>Lab</strong></TableRowColumn>
-                                <TableRowColumn>
-                                    {labElems}
-                                </TableRowColumn>
-                            </TableRow>
-                            <TableRow>
-                                <TableRowColumn><strong>DGD</strong></TableRowColumn>
-                                <TableRowColumn>
-                                    {dgdElems}
-                                </TableRowColumn>
-                            </TableRow>
-                        </TableBody>
-                    </Table>
-                </Paper>
-           </div>
+            <Paper style={style} zDepth={2}>
+                <Table style={{ tableLayout: 'auto' }} selectable={ false }>
+                    <TableBody displayRowCheckbox = {false}>
+                        <TableRow>
+                            <TableRowColumn><strong>Section</strong>&emsp;{this.props.section.letter}</TableRowColumn>
+                            <TableRowColumn><strong>Professor: <a target="_blank" href={`http://www.ratemyprofessor.com/ShowRatings.jsp?tid=${this.props.section.prof.rating}`}>{this.props.section.prof.name}</a></strong></TableRowColumn>
+                        </TableRow>
+                        <TableRow>
+                            <TableRowColumn><strong>Lecture</strong></TableRowColumn>
+                            <TableRowColumn>
+                                {lectureElems}
+                            </TableRowColumn>
+                        </TableRow>
+                        <TableRow>
+                            <TableRowColumn><strong>Lab</strong></TableRowColumn>
+                            <TableRowColumn>
+                                {labElems}
+                            </TableRowColumn>
+                        </TableRow>
+                        <TableRow>
+                            <TableRowColumn><strong>DGD</strong></TableRowColumn>
+                            <TableRowColumn>
+                                {dgdElems}
+                            </TableRowColumn>
+                        </TableRow>
+                    </TableBody>
+                </Table>
+            </Paper>
         );
     }
 }

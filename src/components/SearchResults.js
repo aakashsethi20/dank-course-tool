@@ -8,7 +8,7 @@ const SearchResults = (props) => {
     let courses = props.courses;
     let onSelect = props.onSelect;
     if(courses.length === 0) {
-        return (<div>No courses</div>);
+        return (<div style={{margin:"2em", textAlign: "center"}}>No courses found.</div>);
     }
     let listItem = courses.map( (course, index) => (
         <div>

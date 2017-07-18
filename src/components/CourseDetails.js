@@ -16,19 +16,6 @@ export default class CourseDetails extends React.Component {
         super(props);
     }
     render() {
-        const style = {
-            width: 700
-            // height: 100,
-            // margin: 20,
-            // textAlign: 'center',
-            // display: 'inline-block',
-        };
-
-        // const border_bottom = {
-        //     borderBottom: "border-bottom:1pt solid black"
-        // };
-
-
         const course = this.props.course;
         const courseSections = course.sections;
         const sectionElems = course.sections.map(sec => (
