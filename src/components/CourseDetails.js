@@ -10,25 +10,13 @@ import {
 } from 'material-ui/Table';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import CourseSection from './CourseSection';
+import {cyan800} from 'material-ui/styles/colors';
 
 export default class CourseDetails extends React.Component {
     constructor(props) {
         super(props);
     }
     render() {
-        const style = {
-            width: 700
-            // height: 100,
-            // margin: 20,
-            // textAlign: 'center',
-            // display: 'inline-block',
-        };
-
-        // const border_bottom = {
-        //     borderBottom: "border-bottom:1pt solid black"
-        // };
-
-
         const course = this.props.course;
         const courseSections = course.sections;
         const sectionElems = course.sections.map(sec => (
@@ -58,8 +46,7 @@ export default class CourseDetails extends React.Component {
         const sectionsWinter = winterSections(courseSections);
 
         return (
-            <div>
-                <Tabs>
+                <Tabs style={{maxWidth: "30em", margin: "2em auto"}} tabItemContainerStyle={{backgroundColor: cyan800, color: "grey"}}>
                     {sectionsSummer.length != 0 ? 
                         <Tab label="Summer 2017">
                             {sectionsElems(sectionsSummer)}
@@ -79,7 +66,6 @@ export default class CourseDetails extends React.Component {
                         : null
                     }
                 </Tabs>
-            </div>
         );
     }
 }
