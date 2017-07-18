@@ -21,12 +21,15 @@ export default class SearchBar extends React.Component {
 
     onCancelSearch = () => {
         this.setState({
-            searchActive: false
+            searchActive: false,
+            selectedCourse: undefined,
+            searchText: ""
         })
+        this.props.onCourseSelected(undefined);
     }
 
     onSearchTextUpdate = (event, newText) => {
-        const filteredCourses = courses.filter(course => courseToString(course).toLowerCase().includes(newText.toLowerCase()));
+        const filteredCourses = newText == "" ? undefined : courses.filter(course => courseToString(course).toLowerCase().includes(newText.toLowerCase()));
         this.setState({
             searchText: newText,
             searchActive: true,
@@ -116,7 +119,7 @@ export default class SearchBar extends React.Component {
                             />
                         </Paper>
                         {
-                            animationStatus == "entered" && this.state.searchResults
+                            animationStatus == "entered" && this.state.searchResults && !this.state.selectedCourse
                             ? <SearchResults key="results" courses={this.state.searchResults} onSelect={this.courseSelected} />
                             : null
                         }
