@@ -95,6 +95,14 @@ export default class SearchBar extends React.Component {
                     {animationStatus => {
                       return (
                         <div>
+                        {
+                            animationStatus == "exited"
+                            ? <div style={{position: "absolute", top: "30%", width: "100%"}}>
+                                <div style={{fontSize: "45px", textAlign: "center"}}>Dank Course Tool</div>
+                                <div style={{ textAlign: "center"}}>A uOttawa course search tool by students, for students.</div>
+                                </div>
+                            : null
+                        }
                         <Paper 
                             zDepth={1}
                             style={{
@@ -108,7 +116,6 @@ export default class SearchBar extends React.Component {
                             ? <SearchIcon style={styles.searchIcon}/>
                             : <IconButton style={styles.backIcon} tooltip="Cancel search" tooltipStyles={{top: "20px"}} onTouchTap={this.onCancelSearch}><BackIcon/></IconButton>
                         }
-                            
                             <TextField
                                 fullWidth={true}
                                 hintText="Search for a course"
