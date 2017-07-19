@@ -20,6 +20,7 @@ const SearchResults = (props) => {
                             fp.flow(
                                 fp.map(section => ({term: section.term, year: section.year})),
                                 fp.uniqWith(fp.isEqual),
+                                fp.sortBy(["year", "term"]),
                                 fp.map(section => <span title={`This course is offered in ${fp.capitalize(section.term)} ${section.year}.`}>{semesterIcons[section.term]}</span>)
                             )(course.sections)
                         }

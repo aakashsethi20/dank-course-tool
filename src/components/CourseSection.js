@@ -8,6 +8,7 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table';
+import './CourseSection.css'
 
 export default class CourseSection extends React.Component {
     constructor(props) {
@@ -15,53 +16,54 @@ export default class CourseSection extends React.Component {
     }
 
     render () {
+        const styles = {
+            container: {
+                margin: "1em auto",
+                width:"auto"
+            }
+        }
 
-        const style = {
-            margin: "1em auto",
-            maxWidth: "30em"
-        };
-
-        let lectures = this.props.section.lectures;
-        const lectureElems = lectures.map(lecture => (
-            <div>{lecture.day}&emsp;{lecture.time}</div>
-        ));
-
-        let labs = this.props.section.labs;
-        const labElems = labs.map(lab => (
-            <div>{lab.day}&emsp;{lab.time}</div>
-        ));
-
-        let dgds = this.props.section.dgd;
-        const dgdElems = dgds.map(dgd => (
-            <div>{dgd.day}&emsp;{dgd.time}</div>
-        ));
+        const activities = {
+            lectures: "Lectures",
+            labs: "Labs",
+            dgd: "Tutorials"
+        }
+        
 
         return (
-            <Paper style={style} zDepth={2}>
-                <Table style={{ tableLayout: 'auto' }} selectable={ false }>
-                    <TableBody displayRowCheckbox = {false}>
-                        <TableRow>
-                            <TableRowColumn><strong>Section</strong>&emsp;{this.props.section.letter}</TableRowColumn>
-                            <TableRowColumn><strong>Professor: <a target="_blank" href={`http://www.ratemyprofessor.com/ShowRatings.jsp?tid=${this.props.section.prof.rating}`}>{this.props.section.prof.name}</a></strong></TableRowColumn>
-                        </TableRow>
-                        <TableRow>
-                            <TableRowColumn><strong>Lecture</strong></TableRowColumn>
-                            <TableRowColumn>
-                                {lectureElems}
-                            </TableRowColumn>
-                        </TableRow>
-                        <TableRow>
-                            <TableRowColumn><strong>Lab</strong></TableRowColumn>
-                            <TableRowColumn>
-                                {labElems}
-                            </TableRowColumn>
-                        </TableRow>
-                        <TableRow>
-                            <TableRowColumn><strong>DGD</strong></TableRowColumn>
-                            <TableRowColumn>
-                                {dgdElems}
-                            </TableRowColumn>
-                        </TableRow>
+            <Paper style={styles.container} zDepth={2}>
+                <Table selectable={false}>
+                    <TableBody displayRowCheckbox ={false}>
+                    <TableRow style={styles.row}>
+                        <TableRowColumn style={{paddingRight: "0"}}>
+                            <strong>Section</strong><span style={{marginLeft: "3vw"}}>A</span>
+                        </TableRowColumn>
+                        <TableRowColumn style={{paddingRight: "0"}}>
+                            <strong>Professor</strong>
+                        </TableRowColumn>
+                        <TableHeaderColumn tooltip={"Check ratings on RateMyProfessors.com"} tooltipStyle={{left:"-25%"}} style={{width: "35%", paddingLeft: "0"}}>
+                            <a 
+                                    target="_blank" 
+                                    href={`http://www.ratemyprofessor.com/ShowRatings.jsp?tid=${this.props.section.prof.rating}`}
+                                    style={{}}
+                            >{this.props.section.prof.name}</a>
+                        </TableHeaderColumn>
+                    </TableRow>
+                    {
+                        ["lectures", "labs", "dgd"].map(activity => (
+                            !this.props.section[activity] ? null :
+                                this.props.section[activity].map((dateTime,index,array) => (
+                                    <TableRow displayBorder={index === array.length - 1}>
+                                        {
+                                            index !== 0 ? null : <TableRowColumn rowSpan={array.length}><strong>{activities[activity]}</strong></TableRowColumn>
+                                        }
+                                        <TableRowColumn style={{paddingRight: "0"}}>{dateTime.day}</TableRowColumn>
+                                        <TableRowColumn style={{paddingLeft: "0"}}>{dateTime.time}</TableRowColumn>
+                                    </TableRow>
+                                ))
+                            )
+                        )
+                    }
                     </TableBody>
                 </Table>
             </Paper>
