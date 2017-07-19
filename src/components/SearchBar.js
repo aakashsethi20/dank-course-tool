@@ -22,9 +22,7 @@ export default class SearchBar extends React.Component {
     }
 
     clearSearch = () => {
-        this.setState({
-            searchText: ""
-        });
+        this.onSearchTextUpdate(null, "");
         setTimeout(() => {this.textInput.focus()}, 100);
     }
 
