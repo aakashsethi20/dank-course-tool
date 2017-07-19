@@ -44,11 +44,12 @@ export default class CourseSection extends React.Component {
                         <TableRowColumn style={{paddingRight: "0"}}>
                             <strong>Professor</strong>
                         </TableRowColumn>
-                        <TableHeaderColumn tooltip={"Check ratings on RateMyProfessors.com"} tooltipStyle={{left:"-25%"}} style={{width: "35%", paddingLeft: "0"}}>
+                        <TableHeaderColumn colSpan="2" style={{paddingLeft: "0"}}>
                             <a 
                                     target="_blank" 
                                     href={`http://www.ratemyprofessor.com/ShowRatings.jsp?tid=${this.props.section.prof.rating}`}
                                     style={{display: "block", textOverflow:"ellipsis", overflow: "hidden"}}
+                                    title="Check ratings on RateMyProfessors.com"
                             >{this.props.section.prof.name}</a>
                         </TableHeaderColumn>
                     </TableRow>
@@ -63,6 +64,7 @@ export default class CourseSection extends React.Component {
                                         {activity === "labs" ? <TableRowColumn style={{paddingRight: "0", paddingLeft:"0"}}>{index+1}</TableRowColumn> : null}
                                         <TableRowColumn style={{paddingRight: "0"}}>{dateTime.day}</TableRowColumn>
                                         <TableRowColumn style={{paddingLeft: "0"}}>{dateTime.time}</TableRowColumn>
+                                        <TableHeaderColumn title="Minto building" tooltipStyle={{}} style={{paddingLeft: "0"}}>MNO E217</TableHeaderColumn>
                                     </TableRow>
                                 ))
                             )
