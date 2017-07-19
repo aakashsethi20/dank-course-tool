@@ -45,7 +45,7 @@ export default class CourseDetails extends React.Component {
         const sectionsWinter = winterSections(courseSections);
 
         return (
-                <Tabs style={{maxWidth: "30em", margin: "2em auto"}}>
+                <Tabs style={{maxWidth: "35em", margin: "2em auto", padding: "0 1em"}}>
                     {sectionsSummer.length != 0 ? 
                         <Tab label="Summer 2017">
                             {sectionsElems(sectionsSummer)}

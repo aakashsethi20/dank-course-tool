@@ -48,7 +48,7 @@ export default class CourseSection extends React.Component {
                             <a 
                                     target="_blank" 
                                     href={`http://www.ratemyprofessor.com/ShowRatings.jsp?tid=${this.props.section.prof.rating}`}
-                                    style={{}}
+                                    style={{display: "block", textOverflow:"ellipsis", overflow: "hidden"}}
                             >{this.props.section.prof.name}</a>
                         </TableHeaderColumn>
                     </TableRow>
