@@ -7,6 +7,7 @@ import IconButton from 'material-ui/IconButton';
 import SearchResults from './SearchResults';
 import Transition from 'react-transition-group/Transition';
 import courses from '../courses';
+import './SearchBar.css';
 
 const courseToString = (course) => `${course.code} - ${course.title}`;
 
@@ -107,7 +108,7 @@ export default class SearchBar extends React.Component {
                     {animationStatus => {
                       return (
                         <div>
-                            <div style={{
+                            <div className="tagline" style={{
                                 ...styles.message.defaultStyle,
                                 ...styles.message.transition[animationStatus]
                             }}>
