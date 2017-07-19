@@ -3,6 +3,7 @@ import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import SearchIcon from 'material-ui/svg-icons/action/search';
 import BackIcon from 'material-ui/svg-icons/navigation/arrow-back';
+import CloseIcon from 'material-ui/svg-icons/navigation/close';
 import IconButton from 'material-ui/IconButton';
 import SearchResults from './SearchResults';
 import Transition from 'react-transition-group/Transition';
@@ -18,6 +19,13 @@ export default class SearchBar extends React.Component {
         this.state = {
             searchActive: false
         }
+    }
+
+    clearSearch = () => {
+        this.setState({
+            searchText: ""
+        });
+        setTimeout(() => {this.textInput.focus()}, 100);
     }
 
     onCancelSearch = () => {
@@ -126,9 +134,10 @@ export default class SearchBar extends React.Component {
                         {
                             animationStatus == "exited"
                             ? <SearchIcon style={styles.searchIcon}/>
-                            : <IconButton style={styles.backIcon} tooltip="Cancel search" tooltipStyles={{top: "20px"}} onTouchTap={this.onCancelSearch}><BackIcon/></IconButton>
+                            : <IconButton style={styles.backIcon} onTouchTap={this.onCancelSearch}><BackIcon/></IconButton>
                         }
                             <TextField
+                                ref={(input) => { this.textInput = input; }}
                                 fullWidth={true}
                                 hintText="Search for a course"
                                 underlineShow={false}
@@ -136,6 +145,11 @@ export default class SearchBar extends React.Component {
                                 onChange={this.onSearchTextUpdate}
                                 value={this.state.searchText}
                             />
+                        {
+                            this.state.searchText && this.state.searchActive && !this.state.selectedCourse
+                            ? <IconButton onTouchTap={this.clearSearch}><CloseIcon/></IconButton>
+                            : null
+                        }
                         </Paper>
                         {
                             animationStatus == "entered" && this.state.searchResults && !this.state.selectedCourse
