@@ -4,6 +4,7 @@ import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import SimpleLookup from './components/SimpleLookup';
 import AppBar from './components/AppBar';
+import CourseFinder from './components/CourseFinder';
 
 class App extends React.Component {
 
@@ -12,7 +13,7 @@ class App extends React.Component {
       <MuiThemeProvider>
         <div>
           <AppBar />
-          <SimpleLookup />
+          <CourseFinder />
         </div>
       </MuiThemeProvider>
     );
