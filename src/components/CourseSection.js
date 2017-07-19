@@ -43,7 +43,7 @@ export default class CourseSection extends React.Component {
         const styles = {
             container: {
                 margin: "1em auto",
-                maxWidth: "30em"
+                width:"auto"
             },
             table: {
                 borderCollapse: "collapse",
@@ -74,27 +74,28 @@ export default class CourseSection extends React.Component {
             <Paper style={styles.container} zDepth={2}>
                 <table style={styles.table}>
                     <tr style={styles.row}>
-                        <th>Section</th>
-                        <td>A</td>
-                        <th>Professor</th>
-                        <td>Fadi Malek</td>
+                        <th style={{width: "8em"}}>Section</th>
+                        <td style={{width: "3em"}}>A</td>
+                        <th style={{width: "6em", textAlign: "left", paddingLeft: "1em"}}>Professor</th>
+                        <td style={{width: "15em"}}>Fadi Malek</td>
                     </tr>
                     <tr style={styles.row}>
                         <th rowSpan={1}>Lectures</th>
-                        <td style={{textAlign:"right"}}>Thursday</td>
-                        <td style={{textAlign:"center"}}>10:00-11:30</td>
                         <td></td>
+                        <td style={{paddingLeft: "1em"}}>Thursday</td>
+                        <td>10:00-11:30</td>
                     </tr>
-                    <tr style={styles.row1}>
+                    {/* <tr style={styles.row1}>
                         <th rowSpan={2}>Lectures</th>
-                        <td style={{textAlign:"right"}}>Thursday</td>
-                        <td style={{textAlign:"center"}}>10:00-11:30</td>
                         <td></td>
+                        <td>Thursday</td>
+                        <td>10:00-11:30</td>
                     </tr>
                     <tr style={styles.row2}>
-                        <td style={{textAlign:"right"}}>Thursday</td>
-                        <td style={{textAlign:"center"}}>10:00-11:30</td>
-                    </tr>
+                        <td></td>
+                        <td>Thursday</td>
+                        <td>10:00-11:30</td>
+                    </tr> */}
                 </table>
             </Paper>
         );
