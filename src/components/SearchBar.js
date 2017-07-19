@@ -87,6 +87,18 @@ export default class SearchBar extends React.Component {
                 padding: "0",
                 width: "auto",
                 height: "auto"
+            },
+            message: {
+                defaultStyle: {
+                    width: "100%",
+                    opacity: 0,
+                    position: "absolute", 
+                    top: "30%", 
+                },
+                transition: {
+                    exiting: { transition: `opacity ${speed}ms ease-in ${speed*2.5}ms` , opacity: 1 },
+                    exited:  { transition: `opacity ${speed}ms ease-in ${speed*2.5}ms`, opacity: 1 },
+                }
             }
         }
         return (
@@ -95,14 +107,13 @@ export default class SearchBar extends React.Component {
                     {animationStatus => {
                       return (
                         <div>
-                        {
-                            animationStatus == "exited"
-                            ? <div style={{position: "absolute", top: "30%", width: "100%"}}>
+                            <div style={{
+                                ...styles.message.defaultStyle,
+                                ...styles.message.transition[animationStatus]
+                            }}>
                                 <div style={{fontSize: "45px", textAlign: "center"}}>Dank Course Tool</div>
                                 <div style={{ textAlign: "center"}}>A uOttawa course search tool by students, for students.</div>
-                                </div>
-                            : null
-                        }
+                            </div>
                         <Paper 
                             zDepth={1}
                             style={{
