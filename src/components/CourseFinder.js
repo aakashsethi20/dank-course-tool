@@ -45,12 +45,12 @@ const subjects = [
             <MenuItem value={subject} key={index} primaryText={subject}  />
         ));
 
-        const semesterItems = semesters.map(semester => (
-            <MenuItem value={semesters.toString} key={semesters.toString} primaryText={semesters.toString}  />
+        const semesterItems = semesters.map((semester, index) => (
+            <MenuItem value={semester} key={index} primaryText={semester}  />
         ));
 
-        const yearItems = years.map(year => (
-            <MenuItem value={years.toString} key={years.toString} primaryText={years.toString}  />
+        const yearItems = years.map((year, index) => (
+            <MenuItem value={year} key={index} primaryText={year}  />
         ));
 
 export default class CourseFinder extends React.Component {
@@ -64,8 +64,9 @@ export default class CourseFinder extends React.Component {
         };
     }
 
-    handleChange = (event, index, subjectValue) => this.setState({subjectValue});
-
+    handleSubjectChange = (event, index, subjectValue) => this.setState({subjectValue});
+    handleSemesterChange = (event, index, semesterValue) => this.setState({semesterValue});
+    handleYearChange = (event, index, yearValue) => this.setState({yearValue});
     //handleSearch
 
     render() {
@@ -84,13 +85,13 @@ export default class CourseFinder extends React.Component {
                 </div>
                 <div>
                     <h3>Semester</h3>
-                    <DropDownMenu maxHeight={300} value={this.state.semesterValue} onChange={this.handleChange}>
+                    <DropDownMenu maxHeight={300} value={this.state.semesterValue} onChange={this.handleSemesterChange}>
                         {semesterItems}
                     </DropDownMenu>
                 </div>
                 <div>
                     <h3>Year</h3>
-                    <DropDownMenu maxHeight={300} value={this.state.yearValue} onChange={this.handleChange}>
+                    <DropDownMenu maxHeight={300} value={this.state.yearValue} onChange={this.handleYearChange}>
                         {yearItems}
                     </DropDownMenu>
                 </div>
