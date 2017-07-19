@@ -41,13 +41,13 @@ export default class CourseSection extends React.Component {
                         <TableRowColumn style={{paddingRight: "0"}}>
                             <strong>Professor</strong>
                         </TableRowColumn>
-                        <TableRowColumn style={{width: "35%", paddingLeft: "0"}}>
+                        <TableHeaderColumn tooltip={"Check ratings on RateMyProfessors.com"} tooltipStyle={{left:"-25%"}} style={{width: "35%", paddingLeft: "0"}}>
                             <a 
                                     target="_blank" 
                                     href={`http://www.ratemyprofessor.com/ShowRatings.jsp?tid=${this.props.section.prof.rating}`}
                                     style={{}}
                             >{this.props.section.prof.name}</a>
-                        </TableRowColumn>
+                        </TableHeaderColumn>
                     </TableRow>
                     {
                         ["lectures", "labs", "dgd"].map(activity => (
