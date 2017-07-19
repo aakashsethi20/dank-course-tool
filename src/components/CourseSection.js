@@ -36,7 +36,10 @@ export default class CourseSection extends React.Component {
                     <TableBody displayRowCheckbox ={false}>
                     <TableRow style={styles.row}>
                         <TableRowColumn style={{paddingRight: "0"}}>
-                            <strong>Section</strong><span style={{marginLeft: "3vw"}}>A</span>
+                            <strong>Section</strong>
+                        </TableRowColumn>
+                        <TableRowColumn style={{paddingLeft: "0", paddingRight:"0", width:"5vw"}}>
+                            {this.props.section.letter}
                         </TableRowColumn>
                         <TableRowColumn style={{paddingRight: "0"}}>
                             <strong>Professor</strong>
@@ -53,10 +56,11 @@ export default class CourseSection extends React.Component {
                         ["lectures", "labs", "dgd"].map(activity => (
                             !this.props.section[activity] ? null :
                                 this.props.section[activity].map((dateTime,index,array) => (
-                                    <TableRow displayBorder={index === array.length - 1}>
+                                    <TableRow displayBorder={index === array.length - 1 || activity === "labs"}>
                                         {
-                                            index !== 0 ? null : <TableRowColumn rowSpan={array.length}><strong>{activities[activity]}</strong></TableRowColumn>
+                                            index !== 0 ? null : <TableRowColumn colSpan={activity === "labs" ? 1 : 2} rowSpan={array.length}><strong>{activities[activity]}</strong></TableRowColumn>
                                         }
+                                        {activity === "labs" ? <TableRowColumn style={{paddingRight: "0", paddingLeft:"0"}}>{index+1}</TableRowColumn> : null}
                                         <TableRowColumn style={{paddingRight: "0"}}>{dateTime.day}</TableRowColumn>
                                         <TableRowColumn style={{paddingLeft: "0"}}>{dateTime.time}</TableRowColumn>
                                     </TableRow>
