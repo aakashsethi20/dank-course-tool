@@ -22,6 +22,9 @@ export default class SubjectPicker extends React.Component {
             })
             this.props.onValidationChange(false);
         }
+        else {
+            this.props.onValidationChange(true);
+        }
     }
 
     handleRequestAdd = (chip) => {
@@ -30,6 +33,7 @@ export default class SubjectPicker extends React.Component {
                 chips: [...this.state.chips, chip],
                 errorText: undefined
             });
+             this.props.onValidationChange(true);
         }
     }
 
@@ -49,7 +53,7 @@ export default class SubjectPicker extends React.Component {
                 allowDuplicates={false}
                 onRequestAdd={this.handleRequestAdd}
                 onRequestDelete={this.handleDeleteRequest}
-                errorText={this.state.errorText}
+                errorText={this.props.showError ? "This field is required" : this.state.errorText}
                 onBlur={this.validate}
                 value={this.state.chips}
                 dataSourceConfig={{ text: 'text', value: 'value'}}

@@ -130,25 +130,43 @@ export default class CourseFinder extends React.Component {
 =======
             semesterValue: "Any term",
             yearValue: "Any year",
+<<<<<<< HEAD
             searchActive: false
 >>>>>>> prettified course finder
+=======
+            searchActive: false,
+            valid: false,
+            showError: false
+>>>>>>> Course finder validation
         };
     }
 
     onValidationChange = (val) => this.setState({
-        validation: val
+        valid: val,
+        showError: false
     })
 
     handleSubjectChange = (event, index, subjectValue) => this.setState({subjectValue});
     handleSemesterChange = (event, index, semesterValue) => this.setState({semesterValue});
     handleYearChange = (event, index, yearValue) => this.setState({yearValue});
-    //handleSearch
+
+    handleSearch = (event) => {
+        this.setState({
+            searchActive: this.state.valid
+        })
+        console.log(this.state.valid)
+        if(!this.state.valid) {
+            this.setState({
+                showError: true
+            });
+        }
+    }
 
     render() {
         return (
             <div style={{padding: "0 68px", }}>
                 <div style={{}}>
-                <SubjectPicker onValidationChange={this.onValidationChange} subjects={subjects}></SubjectPicker>
+                <SubjectPicker showError={this.state.showError} onValidationChange={this.onValidationChange} subjects={subjects}></SubjectPicker>
                     <div>
                         <DropDownMenu style={{marginLeft: "-24px"}} maxHeight={300} value={this.state.semesterValue} onChange={this.handleSemesterChange}>
                             {semesterItems}
@@ -162,7 +180,6 @@ export default class CourseFinder extends React.Component {
                 <Transition in={this.state.searchActive} timeout={duration}>
                     {(state) => (
                         <div 
-                            course={this.state.selectedCourse}
                             style={{
                                 ...defaultStyle,
                                 ...transitionStyles[state],
