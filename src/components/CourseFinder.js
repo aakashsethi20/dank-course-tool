@@ -4,8 +4,6 @@ import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import FinderResults from './FinderResults';
 import SubjectPicker from './SubjectPicker';
-<<<<<<< HEAD
-=======
 import Transition from 'react-transition-group/Transition';
 import './CourseFinder.css';
 
@@ -20,7 +18,6 @@ const transitionStyles = {
   entering: { opacity: 1 },
   entered:  { opacity: 1 },
 };
->>>>>>> prettified course finder
 
 const subjects = [
     {
