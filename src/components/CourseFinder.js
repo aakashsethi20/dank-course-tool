@@ -2,6 +2,7 @@ import React from 'react';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
+import FinderResults from './FinderResults';
 
 const subjects = [
             "Pick a subject",
@@ -60,14 +61,16 @@ export default class CourseFinder extends React.Component {
         this.state = {
             subjectValue: "Pick a subject",
             semesterValue: "Choose the term",
-            yearValue: "Any"
+            yearValue: "Any",
+            searchActive: false
         };
     }
 
     handleSubjectChange = (event, index, subjectValue) => this.setState({subjectValue});
     handleSemesterChange = (event, index, semesterValue) => this.setState({semesterValue});
     handleYearChange = (event, index, yearValue) => this.setState({yearValue});
-    //handleSearch
+    
+    handleSearch = (event) => this.setState({searchActive: true});
 
     render() {
 
@@ -77,28 +80,31 @@ export default class CourseFinder extends React.Component {
 
         return (
             <div>
-                <div>
+                <div style={{display: "flex", marginLeft:"2em", marginTop:"1em"}}>
                     <h3>Subject</h3>
                     <DropDownMenu maxHeight={300} value={this.state.subjectValue} onChange={this.handleSubjectChange}>
                         {subjectItems}
                     </DropDownMenu>
                 </div>
-                <div>
+                <div style={{display: "flex", marginLeft:"2em", marginTop:"1em"}}>
                     <h3>Semester</h3>
                     <DropDownMenu maxHeight={300} value={this.state.semesterValue} onChange={this.handleSemesterChange}>
                         {semesterItems}
                     </DropDownMenu>
                 </div>
-                <div>
+                <div style={{display: "flex", marginLeft:"2em", marginTop:"1em"}}>
                     <h3>Year</h3>
                     <DropDownMenu maxHeight={300} value={this.state.yearValue} onChange={this.handleYearChange}>
                         {yearItems}
                     </DropDownMenu>
                 </div>
                 <div>
-                    <RaisedButton label="Search" style={style} />
+                    <RaisedButton label="Search" style={style} onTouchTap={this.handleSearch}/>
                 </div>
-                
+                {this.state.searchActive ?
+                <FinderResults />
+                : null
+                }
             </div>
         );
     }
