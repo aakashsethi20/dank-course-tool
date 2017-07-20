@@ -123,21 +123,11 @@ export default class CourseFinder extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-<<<<<<< HEAD
-            subjectValue: "Pick a subject",
-            semesterValue: "Choose the term",
-            yearValue: "Any"
-=======
             semesterValue: "Any term",
             yearValue: "Any year",
-<<<<<<< HEAD
-            searchActive: false
->>>>>>> prettified course finder
-=======
             searchActive: false,
             valid: false,
             showError: false
->>>>>>> Course finder validation
         };
     }
 
@@ -185,7 +175,7 @@ export default class CourseFinder extends React.Component {
                                 ...transitionStyles[state],
                                 marginTop: "1em"
                             }}>
-                            {this.state.searchActive ? <FinderResults style={{}}/> : null}
+                            {this.state.searchActive ? <FinderResults onShowInTimeTable={this.props.onShowInTimeTable}/> : null}
                         </div>
                     )}
                 </Transition>
