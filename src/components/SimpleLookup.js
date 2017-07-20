@@ -15,10 +15,17 @@ export default class SimpleLookup extends React.Component {
         }
     }
 
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            selectedCourse: nextProps.selectedCourse
+        });
+    }
+
     onCourseSelected = (course) => {
         this.setState({
             selectedCourse: course
         });
+        this.props.onCourseSelected(course);
     }
 
     render() {
@@ -36,11 +43,10 @@ export default class SimpleLookup extends React.Component {
 
         return (
             <div>
-                <SearchBar onCourseSelected={this.onCourseSelected}/>
+                <SearchBar selectedCourse={this.state.selectedCourse} onCourseSelected={this.onCourseSelected}/>
                 <Transition in={!!this.state.selectedCourse} timeout={duration}>
                     {(state) => (
-                    <div 
-                    course={this.state.selectedCourse}
+                    <div
                     style={{
                             ...defaultStyle,
                             ...transitionStyles[state]

@@ -27,6 +27,12 @@ export default class AppTabs extends React.Component {
         });
     };
 
+    onCourseSelected = (course) => {
+        this.setState({
+            selectedCourse: course
+        })
+    }
+
     onShowInTimeTable = (course) => {
         this.setState({
             currentTab: 'a',
@@ -41,8 +47,8 @@ export default class AppTabs extends React.Component {
                     value={this.state.currentTab}
                     onChange={this.handleChange}
                 >
-                    <Tab label="Simple Lookup" value="a">
-                        <SimpleLookup selectedCourse={this.state.selectedCourse} />
+                    <Tab label="Timetables" value="a">
+                        <SimpleLookup onCourseSelected={this.onCourseSelected} selectedCourse={this.state.selectedCourse} />
                     </Tab>
                     <Tab label="Course Finder" value="b">
                         <CourseFinder style={{paddingTop: "24px"}} onShowInTimeTable={this.onShowInTimeTable} />

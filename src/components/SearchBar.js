@@ -21,6 +21,17 @@ export default class SearchBar extends React.Component {
         }
     }
 
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.selectedCourse) {
+            this.setState({
+                selectedCourse: nextProps.selectedCourse,
+                searchText: courseToString(nextProps.selectedCourse),
+                searchActive: true
+            });
+        }
+       
+    }
+
     clearSearch = () => {
         this.onSearchTextUpdate(null, "");
         setTimeout(() => {this.textInput.focus()}, 100);
