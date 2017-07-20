@@ -17,6 +17,7 @@ export default class AppTabs extends React.Component {
         super(props)
         this.state = {
             currentTab: 'a',
+            selectedCourse: null,
         };
     }
 
@@ -26,9 +27,10 @@ export default class AppTabs extends React.Component {
         });
     };
 
-    onShowInTimeTable = () => {
+    onShowInTimeTable = (course) => {
         this.setState({
             currentTab: 'a',
+            selectedCourse : course,
         });
     }
 
@@ -40,7 +42,7 @@ export default class AppTabs extends React.Component {
                     onChange={this.handleChange}
                 >
                     <Tab label="Simple Lookup" value="a">
-                        <SimpleLookup />
+                        <SimpleLookup selectedCourse={this.state.selectedCourse} />
                     </Tab>
                     <Tab label="Course Finder" value="b">
                         <CourseFinder onShowInTimeTable={this.onShowInTimeTable} />
