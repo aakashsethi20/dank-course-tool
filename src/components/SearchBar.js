@@ -60,13 +60,13 @@ export default class SearchBar extends React.Component {
             default: {
                 transition: `all ${speed}ms ease-in-out`,
                 position: "absolute",
-                top: "50%",
+                top: "35vh",
                 left: "15%",
                 width: "70%"
             },
             entering: {
                 position: "absolute",
-                top: "64",
+                top: "0",
                 left: "0",
                 width: "100%"
             },
@@ -100,7 +100,7 @@ export default class SearchBar extends React.Component {
                     width: "100%",
                     opacity: 0,
                     position: "absolute", 
-                    top: "30%", 
+                    top: "13vh", 
                 },
                 transition: {
                     exiting: { transition: `opacity ${speed}ms ease-in ${speed*2.5}ms` , opacity: 1 },
