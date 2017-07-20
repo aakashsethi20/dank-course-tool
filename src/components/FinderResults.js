@@ -49,7 +49,7 @@ export default class FinderResults extends React.Component {
         return (
             <div>
                 <ExpansionList style={{ padding: 16 }}>
-                    <ExpansionPanel label="CSI3101 - Design and Analysis of Algorithms I" secondaryLabel="(3 credits)" defaultExpanded saveLabel="Show Timetable" cancelLabel={null} closeOnSave={false} closeOnCancel={false} onSave={this.handleAnalysis}>
+                    <ExpansionPanel label="CSI3101 - Design and Analysis of Algorithms I" secondaryLabel="(3 credits)" saveLabel="Show Timetable" cancelLabel={null} closeOnSave={false} closeOnCancel={false} onSave={this.handleAnalysis}>
                         {algoContent}
                         <br></br>
                         <br></br>

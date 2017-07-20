@@ -45,7 +45,7 @@ export default class AppTabs extends React.Component {
                         <SimpleLookup selectedCourse={this.state.selectedCourse} />
                     </Tab>
                     <Tab label="Course Finder" value="b">
-                        <CourseFinder onShowInTimeTable={this.onShowInTimeTable} />
+                        <CourseFinder style={{paddingTop: "24px"}} onShowInTimeTable={this.onShowInTimeTable} />
                     </Tab>
                 </Tabs>
             </div>
