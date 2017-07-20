@@ -2,31 +2,83 @@ import React from 'react';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
+import FinderResults from './FinderResults';
+import SubjectPicker from './SubjectPicker';
 
 const subjects = [
-            "Pick a subject",
-            "All",
-            "Administration",
-            "Arabic Language and Culture",
-            "Biomedical Engineering",
-            "Chemical Engineering",
-            "Civil Engineering",
-            "Communications",
-            "Computer Engineering",
-            "Computer Science",
-            "Economics",
-            "Electrical Engineering",
-            "Études des francophones",
-            "Film Studies",
-            "Geology",
-            "Human Kinetics",
-            "Management",
-            "Physics",
-            "Science",
-            "Software Engineering",
-            "Translation",
-            "Yiddish"
-        ];
+    {
+        name: "Administration",
+        code: "ADM"
+    },
+    {
+        name: "Arabic Language and Culture",
+        code: "ARB"
+    },
+    {
+        name: "Biomedical Engineering",
+        code: "BMG"
+    },
+    {
+        name: "Chemical Engineering",
+        code: "CHG"
+    },
+    {
+        name: "Civil Engineering",
+        code: "CVG"
+    },
+    {
+        name: "Communications",
+        code: "COM"
+    },
+    {
+        name: "Computer Engineering",
+        code: "CEG"
+    },
+    {
+        name: "Computer Science",
+        code: "CSI"
+    },
+    {
+        name: "Economics",
+        code: "ECO"
+    },
+    {
+        name: "Electrical Engineering",
+        code: "ELG"
+    },
+    {
+        name: "Science",
+        code: "SCI"
+    },
+    {
+        name: "Geology",
+        code: "GEO"
+    },
+    {
+        name: "Film Studies",
+        code: "CIN"
+    },
+    {
+        name: "Geology",
+        code: "GEO"
+    },
+    {
+        name: "Human Kinetics",
+        code: "APA"
+    },
+    {
+        name: "Management",
+        code: "ADM"
+    },
+    {
+        name: "Physics",
+        code: "PHY"
+    },
+    {
+        name: "Software Engineering",
+        code: "SEG"
+    }
+];
         const semesters = [
             "Choose the term",
             "Summer 2017",
@@ -40,10 +92,6 @@ const subjects = [
             "3",
             "4"
         ];
-        
-        const subjectItems = subjects.map((subject, index) => (
-            <MenuItem value={subject} key={index} primaryText={subject}  />
-        ));
 
         const semesterItems = semesters.map((semester, index) => (
             <MenuItem value={semester} key={index} primaryText={semester}  />
@@ -64,6 +112,10 @@ export default class CourseFinder extends React.Component {
         };
     }
 
+    onValidationChange = (val) => this.setState({
+        validation: val
+    })
+
     handleSubjectChange = (event, index, subjectValue) => this.setState({subjectValue});
     handleSemesterChange = (event, index, semesterValue) => this.setState({semesterValue});
     handleYearChange = (event, index, yearValue) => this.setState({yearValue});
@@ -83,6 +135,9 @@ export default class CourseFinder extends React.Component {
                         {subjectItems}
                     </DropDownMenu>
                 </div>
+                <div style={{display: "flex", marginLeft:"2em", marginTop:"1em"}}>
+                <h3>Subjects</h3>
+                <SubjectPicker onValidationChange={this.onValidationChange} subjects={subjects}></SubjectPicker>
                 <div>
                     <h3>Semester</h3>
                     <DropDownMenu maxHeight={300} value={this.state.semesterValue} onChange={this.handleSemesterChange}>
@@ -98,7 +153,7 @@ export default class CourseFinder extends React.Component {
                 <div>
                     <RaisedButton label="Search" style={style} />
                 </div>
-                
+                </div>
             </div>
         );
     }
