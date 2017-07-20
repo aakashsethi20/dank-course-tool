@@ -102,7 +102,7 @@ export default class CourseFinder extends React.Component {
                     <RaisedButton label="Search" style={style} onTouchTap={this.handleSearch}/>
                 </div>
                 {this.state.searchActive ?
-                <FinderResults />
+                <FinderResults onShowInTimeTable={this.props.onShowInTimeTable} />
                 : null
                 }
             </div>
