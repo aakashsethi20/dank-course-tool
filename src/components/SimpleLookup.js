@@ -11,7 +11,7 @@ export default class SimpleLookup extends React.Component {
         super(props);
         this.state = {
             title: "Hello world",
-            selectedCourse: null
+            selectedCourse: this.props.selectedCourse,
         }
     }
 

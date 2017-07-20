@@ -1,6 +1,7 @@
 import React, { PureComponent, PropTypes } from 'react';
 import { ExpansionList, ExpansionPanel } from 'react-md/lib/ExpansionPanels';
 import icons from '../SemesterIcons'
+import courses from '../courses';
 
 const algoContent = "The celestial sphere and the heliocentric model. Gravity and motion. Telescopes and detectors. Planets and the origin of the Solar System. The Sun, stars, the Milky Way and other galaxies. Black holes, cosmology, dark matter and dark energy.";
 const uiContent = "Psychological principles of human-computer interaction. Evaluation of user interfaces. Usability engineering. Task analysis, user-centered design and prototyping. Conceptual models and metaphors. Software design rationale. Design of windows, menus and commands. Voice and natural language I/O. Response time and feedback. Colour, icons and sound. Internationalization and localization. User interface architectures and A PIs. Case studies and project.";
@@ -22,7 +23,7 @@ export default class FinderResults extends React.Component {
             interfacesSelected: false,
             assuranceSelected: false
         });
-        this.props.onShowInTimeTable();
+        this.props.onShowInTimeTable(courses[1]);
     }
 
     handleInterfaces = (event) => {
@@ -31,7 +32,7 @@ export default class FinderResults extends React.Component {
             interfacesSelected: true,
             assuranceSelected: false
         });
-        this.props.onShowInTimeTable();
+        this.props.onShowInTimeTable(courses[0]);
     }
 
     handleAssurance = (event) => {
@@ -40,7 +41,7 @@ export default class FinderResults extends React.Component {
             interfacesSelected: false,
             assuranceSelected: true
         });
-        this.props.onShowInTimeTable();
+        this.props.onShowInTimeTable(courses[4]);
     }
 
     render() {
