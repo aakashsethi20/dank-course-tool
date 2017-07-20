@@ -4,6 +4,23 @@ import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import FinderResults from './FinderResults';
 import SubjectPicker from './SubjectPicker';
+<<<<<<< HEAD
+=======
+import Transition from 'react-transition-group/Transition';
+import './CourseFinder.css';
+
+const duration = 300;
+
+const defaultStyle = {
+  transition: `opacity ${duration}ms ease-in-out`,
+  opacity: 0,
+}
+
+const transitionStyles = {
+  entering: { opacity: 1 },
+  entered:  { opacity: 1 },
+};
+>>>>>>> prettified course finder
 
 const subjects = [
     {
@@ -80,17 +97,17 @@ const subjects = [
     }
 ];
         const semesters = [
-            "Choose the term",
+            "Any term",
             "Summer 2017",
             "Fall 2017",
             "Winter 2018"
         ];
         const years = [
-            "Any",
-            "1",
-            "2",
-            "3",
-            "4"
+            "Any year",
+            "First year",
+            "Second year",
+            "Third year",
+            "Fourth year"
         ];
 
         const semesterItems = semesters.map((semester, index) => (
@@ -106,9 +123,15 @@ export default class CourseFinder extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+<<<<<<< HEAD
             subjectValue: "Pick a subject",
             semesterValue: "Choose the term",
             yearValue: "Any"
+=======
+            semesterValue: "Any term",
+            yearValue: "Any year",
+            searchActive: false
+>>>>>>> prettified course finder
         };
     }
 
@@ -122,38 +145,33 @@ export default class CourseFinder extends React.Component {
     //handleSearch
 
     render() {
-
-        const style = {
-            margin: 12,
-        };
-
         return (
-            <div>
-                <div>
-                    <h3>Subject</h3>
-                    <DropDownMenu maxHeight={300} value={this.state.subjectValue} onChange={this.handleSubjectChange}>
-                        {subjectItems}
-                    </DropDownMenu>
-                </div>
-                <div style={{display: "flex", marginLeft:"2em", marginTop:"1em"}}>
-                <h3>Subjects</h3>
+            <div style={{padding: "0 68px", }}>
+                <div style={{}}>
                 <SubjectPicker onValidationChange={this.onValidationChange} subjects={subjects}></SubjectPicker>
-                <div>
-                    <h3>Semester</h3>
-                    <DropDownMenu maxHeight={300} value={this.state.semesterValue} onChange={this.handleSemesterChange}>
-                        {semesterItems}
-                    </DropDownMenu>
+                    <div>
+                        <DropDownMenu style={{marginLeft: "-24px"}} maxHeight={300} value={this.state.semesterValue} onChange={this.handleSemesterChange}>
+                            {semesterItems}
+                        </DropDownMenu>
+                        <DropDownMenu maxHeight={300} value={this.state.yearValue} onChange={this.handleYearChange}>
+                            {yearItems}
+                        </DropDownMenu>
+                    </div>
+                <RaisedButton className="searchButton" label="Search" primary={true} onTouchTap={this.handleSearch}/>
                 </div>
-                <div>
-                    <h3>Year</h3>
-                    <DropDownMenu maxHeight={300} value={this.state.yearValue} onChange={this.handleYearChange}>
-                        {yearItems}
-                    </DropDownMenu>
-                </div>
-                <div>
-                    <RaisedButton label="Search" style={style} />
-                </div>
-                </div>
+                <Transition in={this.state.searchActive} timeout={duration}>
+                    {(state) => (
+                        <div 
+                            course={this.state.selectedCourse}
+                            style={{
+                                ...defaultStyle,
+                                ...transitionStyles[state],
+                                marginTop: "1em"
+                            }}>
+                            {this.state.searchActive ? <FinderResults style={{}}/> : null}
+                        </div>
+                    )}
+                </Transition>
             </div>
         );
     }

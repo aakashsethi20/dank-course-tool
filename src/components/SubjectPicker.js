@@ -43,13 +43,12 @@ export default class SubjectPicker extends React.Component {
 
     render() {
         return (
-            <div className='picker' style={{width:"100%", maxWidth:"30em"}}>
+            <div className='picker' style={{maxWidth:"30em"}}>
             <ChipInput 
                 floatingLabelText="Subjects (required)"
                 allowDuplicates={false}
                 onRequestAdd={this.handleRequestAdd}
                 onRequestDelete={this.handleDeleteRequest}
-                fullWidth
                 errorText={this.state.errorText}
                 onBlur={this.validate}
                 value={this.state.chips}
