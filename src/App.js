@@ -3,8 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import SimpleLookup from './components/SimpleLookup';
+import AppTabs from './components/AppTabs';
 import AppBar from './components/AppBar';
-<<<<<<< HEAD
 import {teal500} from 'material-ui/styles/colors';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
@@ -13,9 +13,6 @@ const muiTheme = getMuiTheme({
     primary1Color: teal500
   }
 });
-=======
-import CourseFinder from './components/CourseFinder';
->>>>>>> 040b73d93e8c2d52fed7fe986abfa67c6565b372
 
 class App extends React.Component {
 
@@ -23,13 +20,8 @@ class App extends React.Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-<<<<<<< HEAD
           <AppBar backgroundColor={muiTheme.palette.primary}/>
-          <SimpleLookup />
-=======
-          <AppBar />
-          <CourseFinder />
->>>>>>> 040b73d93e8c2d52fed7fe986abfa67c6565b372
+          <AppTabs />
         </div>
       </MuiThemeProvider>
     );
