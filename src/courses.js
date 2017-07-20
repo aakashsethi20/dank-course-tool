@@ -7,14 +7,14 @@ const courses = [
                 term: "winter",
                 year: "2018",
                 prof: {
-                    name: "Fadi Malek",
-                    rating: "1950539"
+                    name: "Miguel Garzon",
+                    rating: "1977217"
                 },
                 letter: "A",
                 lectures: [
                     {
-                        day: "Tuesday",
-                        time: "11:30 - 13:00"
+                        day: "Friday",
+                        time: "13:00 - 14:30"
                     },
                     {
                         day: "Thursday",
@@ -23,12 +23,8 @@ const courses = [
                 ],
                 labs: [
                     {
-                        day: "Tuesday",
-                        time: "10:00 - 11:30"
-                    },
-                    {
-                        day: "Tuesday",
-                        time: "10:00 - 11:30"
+                        day: "Monday",
+                        time: "14:30 - 16:00"
                     }
                 ],
                 dgd: [
@@ -113,7 +109,7 @@ const courses = [
                 },
                 {
                     day: "Wednesday",
-                    time: "13:00 -14:30"
+                    time: "13:00 - 14:30"
                 }
                 ],
             }
@@ -134,31 +130,31 @@ const courses = [
                 lectures: [
                     {
                         day: "Monday",
-                        time: "11:30-13:00"
+                        time: "11:30 - 13:00"
                     },
                     {
                         day: "Thursday",
-                        time: "13:00-14:30"
+                        time: "13:00 - 14:30"
                     }
                 ],
                 labs: [
                     {
                         day: "Tuesday",
-                        time: "13:00-14:30"
+                        time: "13:00 - 14:30"
                     },
                     {
                         day: "Thursday",
-                        time: "11:30-13:00"
+                        time: "11:30 - 13:00"
                     },
                     {
                         day: "Friday",
-                        time: "11:30-13:00"
+                        time: "11:30 - 13:00"
                     }
                 ],
                 dgd: [
                     {
                         day: "Wednesday",
-                        time: "13:00-14:30"
+                        time: "13:00 - 14:30"
                     }
                 ],
             },
@@ -173,31 +169,31 @@ const courses = [
                 lectures: [
                     {
                         day: "Tuesday",
-                        time: "10:00-11:30"
+                        time: "10:00 - 11:30"
                     },
                     {
                         day: "Thursday",
-                        time: "8:30-10:00"
+                        time: "8:30 - 10:00"
                     }
                 ],
                 labs: [
                     {
                         day: "Tuesday",
-                        time: "14:30-16:00"
+                        time: "14:30 - 16:00"
                     },
                     {
                         day: "Wednesday",
-                        time: "8:30-10:00"
+                        time: "8:30 - 10:00"
                     },
                     {
                         day: "Wednesday",
-                        time: "10:00-11:30"
+                        time: "10:00 - 11:30"
                     }
                 ],
                 dgd: [
                     {
                         day: "Friday",
-                        time: "14:30-16:00"
+                        time: "14:30 - 16:00"
                     }
                 ],
             }
@@ -218,23 +214,23 @@ const courses = [
                 lectures: [
                     {
                         day: "Monday",
-                        time: "13:00-16:00"
+                        time: "13:00 - 16:00"
                     }                 
                 ],
                 labs: [
                     {
                         day: "Wednesday",
-                        time: "17:30-19:00"
+                        time: "17:30 - 19:00"
                     },
                     {
                         day: "Friday",
-                        time: "11:30-13:00"
+                        time: "11:30 - 13:00"
                     }
                 ],
                 dgd: [
                     {
                         day: "Friday",
-                        time: "14:30-16:00"
+                        time: "14:30 - 16:00"
                     }
                 ],
             },
@@ -249,23 +245,23 @@ const courses = [
                 lectures: [
                     {
                         day: "Thursday",
-                        time: "14:00-16:30"
+                        time: "14:00 - 16:30"
                     }
                 ],
                 labs: [
                     {
                         day: "Tuesday",
-                        time: "17:30-19:00"
+                        time: "17:30 - 19:00"
                     },
                     {
                         day: "Tuesday",
-                        time: "17:30-19:00"
+                        time: "17:30 - 19:00"
                     }
                 ],
                 dgd: [
                     {
                         day: "Tuesday",
-                        time: "16:00-17:30"
+                        time: "16:00 - 17:30"
                     }
                 ],
             }
@@ -286,23 +282,23 @@ const courses = [
                 lectures: [
                     {
                         day: "Friday",
-                        time: "8:30-11:30"
+                        time: "8:30 - 11:30"
                     }                 
                 ],
                 labs: [
                     {
                         day: "Friday",
-                        time: "16:00-17:30"
+                        time: "16:00 - 17:30"
                     },
                     {
                         day: "Friday",
-                        time: "16:00-17:30"
+                        time: "16:00 - 17:30"
                     }
                 ],
                 dgd: [
                     {
                         day: "Friday",
-                        time: "14:00-16:30"
+                        time: "14:00 - 16:30"
                     }
                 ],
             }        
@@ -323,27 +319,27 @@ const courses = [
                 lectures: [
                     {
                         day: "Tuesday",
-                        time: "14:30-16:00"
+                        time: "14:30 - 16:00"
                     },
                     {
                         day: "Friday",
-                        time: "16:30-17:30"
+                        time: "16:30 - 17:30"
                     }                
                 ],
                 labs: [
                     {
                         day: "Friday",
-                        time: "13:00-14:30"
+                        time: "13:00 - 14:30"
                     },
                     {
                         day: "Friday",
-                        time: "13:00-14:30"
+                        time: "13:00 - 14:30"
                     }
                 ],
                 dgd: [
                     {
                         day: "Friday",
-                        time: "17:30-19:00"
+                        time: "17:30 - 19:00"
                     }
                 ],
             }        
