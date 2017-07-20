@@ -63,7 +63,7 @@ export default class CourseSection extends React.Component {
                                         }
                                         {activity === "labs" ? <TableRowColumn style={{paddingRight: "0", paddingLeft:"0"}}>{index+1}</TableRowColumn> : null}
                                         <TableRowColumn style={{paddingRight: "0"}}>{dateTime.day}</TableRowColumn>
-                                        <TableRowColumn style={{paddingLeft: "0"}}>{dateTime.time}</TableRowColumn>
+                                        <TableRowColumn style={{paddingLeft: "0", paddingRight: "0"}}>{dateTime.time}</TableRowColumn>
                                         <TableHeaderColumn title="Minto building" tooltipStyle={{}} style={{paddingLeft: "0"}}>MNO E217</TableHeaderColumn>
                                     </TableRow>
                                 ))
