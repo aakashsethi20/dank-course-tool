@@ -19,7 +19,7 @@ class App extends React.Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-          <AppBar backgroundColor={muiTheme.palette.primary}/>
+          <AppBar className='appbar' />
           <SimpleLookup />
         </div>
       </MuiThemeProvider>
