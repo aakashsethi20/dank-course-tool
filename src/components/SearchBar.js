@@ -66,7 +66,7 @@ export default class SearchBar extends React.Component {
     }
 
     render() {
-        const speed = 200;
+        const speed = !!this.props.selectedCourse ? 1 : 200;
         const transitionStyles = {
             default: {
                 transition: `all ${speed}ms ease-in-out`,

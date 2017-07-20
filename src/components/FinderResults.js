@@ -53,21 +53,21 @@ export default class FinderResults extends React.Component {
                         {algoContent}
                         <br></br>
                         <br></br>
-                        <span style={{ color: "grey", fontStyle: "italic" }}>Offered in: </span><span style={{ display: "inline-block", width: "100px" }}>{icons.summer} {icons.fall}</span>
+                        <span style={{ color: "grey", fontStyle: "italic" }}>Offered in: </span><span title="This course is offered in Summer 2017 and Fall 2017" style={{ display: "inline-block", width: "100px" }}>{icons.summer} {icons.fall}</span>
                         <span style={{ color: "grey", fontStyle: "italic" }}>Prerequisites: CSI2110 and CSI2101</span> 
                     </ExpansionPanel>
                     <ExpansionPanel label="SEG3125 - Analysis and Design of User Interfaces" secondaryLabel="(3 credits)" saveLabel="Show Timetable" cancelLabel={null} onSave={this.handleInterfaces}>
                         {uiContent}
                         <br></br>
                         <br></br>
-                        <span style={{ color: "grey", fontStyle: "italic"}}>Offered in: </span><span style={{ display: "inline-block", width: "100px" }}>{icons.summer} {icons.winter}</span>
+                        <span style={{ color: "grey", fontStyle: "italic"}}>Offered in: </span><span title="This course is offered in Summer 2017 and Winter 2018" style={{ display: "inline-block", width: "100px" }}>{icons.summer} {icons.winter}</span>
                         <span style={{ color: "grey", fontStyle: "italic" }}>Prerequisites: SEG2105</span> 
                     </ExpansionPanel>
                     <ExpansionPanel label="SEG3103 - Software Quality Assurance" secondaryLabel="(3 credits)" saveLabel="Show Timetable" cancelLabel={null} onSave={this.handleAssurance}>
                         {assuranceContent}
                         <br></br>
                         <br></br>
-                        <span style={{ color: "grey", fontStyle: "italic"  }}>Offered in: </span><span style={{ display: "inline-block", width: "100px" }}>{icons.fall}</span>
+                        <span style={{ color: "grey", fontStyle: "italic"  }}>Offered in: </span><span title="This course is offered in Fall 2017" style={{ display: "inline-block", width: "100px" }}>{icons.fall}</span>
                         <span style={{ color: "grey", fontStyle: "italic" }}>Prerequisites: SEG2105</span>                         
                     </ExpansionPanel>
                 </ExpansionList>
