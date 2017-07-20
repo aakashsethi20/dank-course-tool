@@ -151,8 +151,9 @@ export default class CourseFinder extends React.Component {
 
     render() {
         return (
-            <div style={{padding: "0 68px", }}>
-                <div style={{}}>
+            <div style={{padding: "24px 4vw", }}>
+                <div style={{textAlign: "center"}}>Find available courses by subject, term, and year.</div>
+                <div style={{paddingLeft: "16px"}}>
                 <SubjectPicker showError={this.state.showError} onValidationChange={this.onValidationChange} subjects={subjects}></SubjectPicker>
                     <div>
                         <DropDownMenu style={{marginLeft: "-24px"}} maxHeight={300} value={this.state.semesterValue} onChange={this.handleSemesterChange}>
@@ -162,7 +163,7 @@ export default class CourseFinder extends React.Component {
                             {yearItems}
                         </DropDownMenu>
                     </div>
-                <RaisedButton className="searchButton" label="Search" primary={true} onTouchTap={this.handleSearch}/>
+                <RaisedButton className="searchButton" label="Search" secondary={true} onTouchTap={this.handleSearch}/>
                 </div>
                 <Transition in={this.state.searchActive} timeout={duration}>
                     {(state) => (

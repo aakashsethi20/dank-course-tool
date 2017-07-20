@@ -1,3 +1,7 @@
 .searchButton span {
     line-height: 36px
 }
+
+.md-text--theme-primary {
+    color: rgb(0, 150, 136)
+}

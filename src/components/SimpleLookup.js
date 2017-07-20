@@ -29,7 +29,6 @@ export default class SimpleLookup extends React.Component {
     }
 
     render() {
-        console.log(this.props.selectedCourse);
         const duration = 350;
         const defaultStyle = {
             transition: `opacity ${duration}ms ease-in-out`,
