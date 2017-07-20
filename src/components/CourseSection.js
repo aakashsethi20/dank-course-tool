@@ -59,7 +59,7 @@ export default class CourseSection extends React.Component {
                                 this.props.section[activity].map((dateTime,index,array) => (
                                     <TableRow displayBorder={index === array.length - 1 || activity === "labs"}>
                                         {
-                                            index !== 0 ? null : <TableRowColumn colSpan={activity === "labs" ? 1 : 2} rowSpan={array.length}><strong>{activities[activity]}</strong></TableRowColumn>
+                                            index !== 0 ? null : <TableRowColumn style={{paddingRight: "0"}} colSpan={activity === "labs" ? 1 : 2} rowSpan={array.length}><strong>{activities[activity]}</strong></TableRowColumn>
                                         }
                                         {activity === "labs" ? <TableRowColumn style={{paddingRight: "0", paddingLeft:"0"}}>{index+1}</TableRowColumn> : null}
                                         <TableRowColumn style={{paddingRight: "0"}}>{dateTime.day}</TableRowColumn>
